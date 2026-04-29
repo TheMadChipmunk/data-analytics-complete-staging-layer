@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: "Jaffle Shop coffee shop raw data"
+    database: dev       # Nom du catalogue DuckDB (stem de dev.duckdb)
+    schema: raw
+    meta:
+      owner: "Data Team"
+
+    tables:
+      - name: customers
+        identifier: raw_customers  # Nom réel en base → on écrit 'customers' dans le SQL
+
+      - name: orders
+        identifier: raw_orders
+
+      - name: payments
+        identifier: raw_payments

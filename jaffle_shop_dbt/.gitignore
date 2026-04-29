@@ -1,0 +1,16 @@
+# dbt artifacts (compiled SQL, generated docs)
+target/
+dbt_packages/
+logs/
+
+# Database files (too large for GitHub, regenerable)
+*.duckdb
+*.duckdb.wal
+
+# Python bytecode
+*.pyc
+__pycache__/
+
+# OS files
+.DS_Store
+data/
