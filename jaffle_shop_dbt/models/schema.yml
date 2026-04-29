@@ -17,3 +17,40 @@ sources:
 
       - name: payments
         identifier: raw_payments
+
+models:
+  - name: stg_customers
+    description: 'Cleaned customers from Jaffle Shop. One row per customer.'
+    columns:
+      - name: customer_id
+        description: 'Unique customer identifier. Renamed from id.'
+      - name: first_name
+        description: 'Customer first name'
+      - name: last_name
+        description: 'Customer last name'
+
+  - name: stg_orders
+    description: 'Cleaned orders from Jaffle Shop. One row per order.'
+    columns:
+      - name: order_id
+        description: 'Unique order identifier. Renamed from id.'
+      - name: customer_id
+        description: 'Customer identifier. Renamed from user_id for FK consistency.'
+      - name: order_date
+        description: 'Date the order was placed'
+      - name: status
+        description: 'Order fulfillment status'
+
+  - name: stg_payments
+    description: >
+      Cleaned payments from Jaffle Shop. One row per payment.
+      Amount is in dollars, converted from cents (divided by 100.0).
+    columns:
+      - name: payment_id
+        description: 'Unique payment identifier. Renamed from id.'
+      - name: order_id
+        description: 'Order identifier (FK to stg_orders)'
+      - name: payment_method
+        description: 'Payment method: credit_card, coupon, bank_transfer, gift_card'
+      - name: amount
+        description: 'Payment amount in dollars. Converted from cents (amount / 100.0).'
